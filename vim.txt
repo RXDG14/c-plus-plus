@@ -1,0 +1,19 @@
+1)move by up,down,left,right or vim way k,j,h,l
+2)escape to get into the normal mode
+3):q! to exit discarding any changes
+4)x to delete
+5)i to insert or to type
+6)A to append or to move to the end of the line
+7):wq to save and quit
+  also :x for save and quit
+8)vim <filename.extension> to create a file
+9)dw to delete a word
+10)dd to delete the whole line
+   2dd to delete two whole lines
+11)e to gotothe end of the word
+12)de to delete till end of the word
+13)u for undo
+14)w to move to the next word
+15)p to put(delete sentence and put it somehwere)
+16)ce (move cursor to delete specific word and retype)
+17)compilation and everything like normal gedit way
