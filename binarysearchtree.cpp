@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+int n;
+
 class node
 {
  public:
@@ -56,10 +58,28 @@ void insert()
 int preorder(node* node) 
 { 
     if (node == NULL) 
-        return(333333); 
+        return(1); 
     cout << node->data << " "; 
     preorder(node->left);  
     preorder(node->right); 
+} 
+
+ 
+bool search(node* node,int n)
+{
+    if (node == NULL) 
+       {
+	    return false; 
+       }
+	else if(node->data==n)
+			{
+			 return true;
+			}
+	//cout << node->data << " "; 
+    else if(n <= node->data)
+			return search(node->left,n);  
+    else if(n > node->data)
+			return search(node->right,n); 
 } 
 
 
@@ -69,7 +89,7 @@ int main()
  while(1)
  	{ 
 		int ch;
-		cout<<"\n1.insert \n2.traverse(pre-order) \n3.exit";
+		cout<<"\n1.insert \n2.traverse(pre-order) \n3.search \n4.exit \n";
 		cin>>ch;
     switch(ch)
     	{
@@ -80,6 +100,15 @@ int main()
 				preorder(root);
 				break;
 	    	case 3:
+					cout<<"enter the element to be searched for : ";
+					int n;
+					cin>>n;
+					if(search(root,n)== true)
+						cout<<"element is found \n";
+					else 
+						cout<<"element is not found \n";
+				break;
+			case 4:
 				return 0;
     	}
 	}
