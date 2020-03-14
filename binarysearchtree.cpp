@@ -12,6 +12,13 @@ class node
 }*root=NULL;
 
 
+node* findmin(node* root)
+{
+	while(root->left != NULL)
+	{	root = root->left;}
+	return root;	
+}
+
 node* createnode(int value)
 {
  node* newnode=new node();   //of class type node
@@ -82,6 +89,63 @@ bool search(node* node,int n)
 			return search(node->right,n); 
 } 
 
+node* deletenode(node* root,int value)
+{
+  if(root==NULL)
+ 	{
+	 return root;
+	}
+  else if(value <= root->data)
+ 	{
+	 root->left = deletenode(root->left,value);
+	}
+ else if(value > root->data)
+ 	{
+	 root->right = deletenode(root->right,value);
+	}
+ else
+ 	{
+	 if(root->left==NULL && root->right==NULL)  //if leaf node
+	 	{
+		 delete root;
+		 root=NULL;
+		}
+	 else if(root->left==NULL)                  //if single parent
+	 		{
+			 node* temp;
+			 temp=root;       //cant directly delete root we gotta make a link first
+			 root=root->right;
+			 delete temp;
+			}
+	 else if(root->right==NULL)        //single parent either left is null or rigth so check both cases                 
+	 		{
+			 node* temp;
+			 temp=root;     
+			 root=root->left;
+			 delete temp;
+			}
+	 else                                 //parent of 2 children
+	    {
+		 node* temp;
+		 temp=findmin(root->right);
+		 root->data = temp->data;    //copy max from left on place of the root via temp
+		 root->right = deletenode(root->right,temp->data);
+		}
+	}
+	//return root;
+}
+
+/*void del()
+{
+ int x;
+ //node* r,newroot;
+ //node* returnedroot;
+ cout<<"enter the number to be deleted : ";
+ cin>>x;
+ //returnedroot=root
+ root=deletenode(root,x); //if you dont make it root=..  then it will by default choose root as your global NULL wala root
+ //delete root;
+}*/
 
 
 int main()
@@ -89,17 +153,23 @@ int main()
  while(1)
  	{ 
 		int ch;
-		cout<<"\n1.insert \n2.traverse(pre-order) \n3.search \n4.exit \n";
+		cout<<"\n1.insert \n2.delete \n3.traverse(pre-order) \n4.search \n5.exit \n";
 		cin>>ch;
     switch(ch)
     	{
 		    case 1:
 				insert();
 				break;
-        	case 2:	
+        	case 2:
+				int value;
+				cout<<"enter the number to be deleted : ";
+				cin>>value;
+				root=deletenode(root,value);
+				break;
+			case 3:	
 				preorder(root);
 				break;
-	    	case 3:
+	    	case 4:
 					cout<<"enter the element to be searched for : ";
 					int n;
 					cin>>n;
@@ -108,7 +178,7 @@ int main()
 					else 
 						cout<<"element is not found \n";
 				break;
-			case 4:
+			case 5:
 				return 0;
     	}
 	}
