@@ -3,4 +3,8 @@
 3)git add
 4)git commit
 5)git push
-
+6)git checkout <branchname> to switch to that branch
+7)git branch -d <branchname> to delete the branch
+8)git branch to show all branches
+9)git branch <branchname> to create a branch
+10)
