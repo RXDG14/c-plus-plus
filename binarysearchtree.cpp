@@ -95,7 +95,7 @@ node* deletenode(node* root,int value)
  	{
 	 return root;
 	}
-  else if(value <= root->data)
+  else if(value < root->data)
  	{
 	 root->left = deletenode(root->left,value);
 	}
@@ -132,7 +132,7 @@ node* deletenode(node* root,int value)
 		 root->right = deletenode(root->right,temp->data);
 		}
 	}
-	//return root;
+	return root;
 }
 
 /*void del()
