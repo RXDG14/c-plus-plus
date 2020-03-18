@@ -7,7 +7,25 @@ void addEdge(vector<int> arr[], int u, int v)
     arr[u].push_back(v); //put element in that vertices's list
    // adj[v].push_back(u); for undirected but gotta make changes other places too 
 } 
-  
+
+//this doesnt work yet. will look through later. this was implemented to check if entered edge is present in verticesvalues or not
+int check(int inputlinks,int j,int v,vector<int>arr1,vector<int>arr[]) //j is vertice number . v is number of vertices
+{
+  for(auto k : arr1)
+	{
+	 if(arr1[k]==inputlinks) //check if that vertice is present or not in vertices array arr1
+	   {	 
+		 addEdge(arr,j,inputlinks);//j sent bcoz thats the vertice number
+		 //break;
+	   }  
+	// else
+	  //  {   
+		// cout<<"error wrong input ";
+	//	}  
+	}
+}
+
+
 void printGraph(vector<int> arr[], int V) 
 { 
     for (int v = 0; v < V; ++v)   //first vector element 
@@ -48,9 +66,3 @@ int main()
     printGraph(arr, v); 
     return 0; 
 }
-
-/*
-this still incomplete though like:
-
-1)u can put any number of input edges inside a list even if they(vertices) dont exist
-*/
