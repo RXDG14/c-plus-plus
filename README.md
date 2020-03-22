@@ -1,2 +1,2 @@
 # c++
--[learn c++ from scratch](learncpp.com)
+-[learn c++ from scratch](https://www.learncpp.com/)
