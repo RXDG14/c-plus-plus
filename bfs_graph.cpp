@@ -7,7 +7,7 @@ using namespace std;
 class graph 
 { 
     int v;    // No. of vertices 
-    list<int> *adj; //pointer to the list    
+	list<int> *adj; //pointer to the list    
 public: 
     graph(int v);  // Constructor 
     void addedge(int s, int d);  
@@ -19,13 +19,14 @@ public:
 graph::graph(int vertice) 
 { 
     this->v=vertice; 
-    adj = new list<int>[vertice];	//adj is list pointer which is now pointing to the first list in an array of lists 
+    adj = new list<int>[v];	//adj is list pointer which is now pointing to the first list in an array of lists 
 } 
   
 
 void graph::addedge(int s, int d) 
 { 
     adj[s].push_back(d); // Add value d to list number s. 
+//	adj[d].push_back(s);
 }
 
 
@@ -46,7 +47,7 @@ void graph::BFS(int s)
 	 s=queue.front();
 	 cout<<s<<' ';		 //printing in ur visited order
 	 queue.pop_front();  //pop and display the visited vertice
-
+	 //down here in for loop we iterating through the elements inside the lists first list,second ,third...
 	 for(i=adj[s].begin(); i != adj[s].end();i++) //iterate i(iterator) from pointer adj current list number fully till <NULL
 	 	{
 		 if(!visited[*i])  

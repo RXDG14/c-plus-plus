@@ -7,4 +7,4 @@
 7)git branch -d <branchname> to delete the branch
 8)git branch to show all branches
 9)git branch <branchname> to create a branch
-10)
+10)git add -u :/  this updates your git changes from ur pc to github
