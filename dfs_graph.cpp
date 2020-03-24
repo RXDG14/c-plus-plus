@@ -27,6 +27,7 @@ graph::graph(int vertice)
 void graph::addedge(int s, int d) 
 { 
     adj[s].push_back(d); // Add value d to list number s. 
+	adj[d].push_back(s);
 }
 
 
