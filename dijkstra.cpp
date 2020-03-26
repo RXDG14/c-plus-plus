@@ -1,6 +1,12 @@
+/******************************************************************************************************
+           can only calculate shortest distance . cannot display the travelled shortest path
+		   									
+										    	:(
+******************************************************************************************************/
+
 #include<bits/stdc++.h>
 using namespace std;
-
+int u;
 #define inf 9999999
 
 
@@ -31,7 +37,7 @@ void graph::addedge(int s,int d,int w)
 
 
 void graph::dijkstra(int source)
-{	
+{
  //create a priority queue to get least distance edge
  //prioritize the queue pq this is syntax for it just put your pair inside the vector and greater all changes will take place
  //in pair you created. the pq stores elements in descending order
@@ -41,13 +47,12 @@ void graph::dijkstra(int source)
  //this priority queue automatically acts as a min heap with least value as a root node
  
  vector<int> dist(v,inf); 		//made a vector dist in which all vertices v have been made infinite
- pq.push(make_pair(0,source));	//put source in pq and make its distance from itself zero
+ pq.push(make_pair(0,source));	//put source in pq .(weight,vertex) u put source at start and its distance from source (itself->w)
  dist[source]=0;				//update it in array [dist] the source distance from itself as 0
  while(!pq.empty())
  	{
-	 int u=pq.top().second;		//current node ka vertex (s>>d>>w input tha so d is the vertex taken here)
+	 u=pq.top().second;	//goes to next node in pq(s>>d>>w so d taken here)(second bcoz source->pq.push source is second)
 	 			//top here above because its a min heap and least value is the root node so we choose top()
-
 	 pq.pop();
 	 list<pair<int,int>> ::iterator i;
 	 for(i=adj[u].begin();i!=adj[u].end();i++)		//adjacent vertices
@@ -57,11 +62,12 @@ void graph::dijkstra(int source)
 		 
 		 if(dist[v]>dist[u] + w)			//check if current node is infinity?
 		 	{
-			 dist[v]=dist[u] + w;			//if infinity then update it to its weight
-			 pq.push(make_pair(dist[v],v)); //push the pair<distance of vertex and vertex> into the pq
-			}
+			 dist[v]=dist[u] + w;			//if infinity then update it to its weight to reach from source
+			 pq.push(make_pair(dist[v],v)); //push the pair<distance of vertex and vertex> into the other vertex in pq
+			}	
 		}
 	}
+	
 	cout<<"enter destination vertex : ";
 	int destination;
 	cin>>destination;
@@ -69,7 +75,7 @@ void graph::dijkstra(int source)
 		{
 		 if(i==destination)
 		 	{
-			 cout<<dist[i]<<'\n';	//if found then print its total distance from source
+			 cout<<"shortest distance total : "<<dist[i]<<'\n';	//if found then print its total distance from source
 			 break;
 			}	
 		}
