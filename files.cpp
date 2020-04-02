@@ -7,16 +7,16 @@ using namespace std;
 // /* ************to create a file and input something in it*********************
 int main()
 {
- ofstream f{"sample.txt"};		//create the output file
+ ofstream f("sample.txt");		//create the output file
  if(!f)	//if the file could not be made/created
  	{
 	 cout<<"error file cannot be created ";
 	 return 1;
 	}
-/*  while(!feof())
+ /* while() //for user input to file try making a char and then cin.getline(x,limit);
  	{
 	 string x;
-	 f>>x;
+	 getline(cin,x);
 	}*/
  f<<"this is line 1 "<<'\n';		//written to file
  f<<"this is line 2 "<<"\n";		//written to file
