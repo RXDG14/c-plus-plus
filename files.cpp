@@ -13,11 +13,17 @@ int main()
 	 cout<<"error file cannot be created ";
 	 return 1;
 	}
- /* while() //for user input to file try making a char and then cin.getline(x,limit);
+ //wtf do i do here??????????????????????????
+ string x="yes";
+ while(x=="yes")
  	{
-	 string x;
 	 getline(cin,x);
-	}*/
+	 cin>>x;
+	 f<<x<<"\n";
+	 cout<<"more input???? : ";
+	 cin>>x;
+	}
+ //f<<x<<" ";	
  f<<"this is line 1 "<<'\n';		//written to file
  f<<"this is line 2 "<<"\n";		//written to file
  return 0;
